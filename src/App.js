@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 
 import tasks from './data/tasks.json';
-import Tasks from './components/Tasks';
+import TasksList from './components/TasksList';
 
 class App extends Component {
 
@@ -12,10 +12,8 @@ class App extends Component {
 
   render(){
     return <div>
-      {/* Aquí mandamos la propiedad "tasks", que puede ser cualquier otro nombre, al componente
-      Tasks, que sería el hijo; en el componente Tasks que es el padre rebemos recibir 
-      esta propiedad con "this.props.tasks"  */}
-      <Tasks tasks={ this.state.tasks } />
+      {/* Aquí mandamos la propiedad "tasks", que puede ser cualquier otro nombre, desde este componente que es el padre, al componente TasksList, que sería el hijo; en el componente TasksList ahora debemos recibir esta propiedad con "this.props.tasks"  */}
+      <TasksList tasks={ this.state.tasks } />
     </div>  
   }
 }
