@@ -13,6 +13,6 @@
         "id":2,
         "title": "Task three",
         "description": "Read Game of Thrones",
-        "done": false
+        "done": true
     }
 ]
