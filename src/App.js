@@ -12,7 +12,7 @@ class App extends Component {
 
   render(){
     return <div>
-      {/* Aquí mandamos la propiedad "tasks", que puede ser cualquier otro nombre, desde este componente que es el padre, al componente TasksList, que sería el hijo; en el componente TasksList ahora debemos recibir esta propiedad con "this.props.tasks"  */}
+      {/* Aquí mandamos la propiedad que es un arreglo llamado "tasks", que puede ser cualquier otro nombre, desde este componente que es el padre, al componente TasksList, que sería el hijo; en el componente TasksList ahora debemos recibir esta propiedad con "this.props.tasks"  */}
       <TasksList tasks={ this.state.tasks } />
     </div>  
   }
