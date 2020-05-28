@@ -35,7 +35,7 @@ const button_styles = {
     fontSize: '15px'
 };
 
-// Los propTypes sirven para especificar el tipo de datos de props que estamos pasando entre componentes; para evitar que si esperamos recibir un objeto de tipo task no recibamos un arrelglo o un número por ejemplo 
+// Los propTypes sirven para especificar el tipo de datos de props que estamos pasando entre componentes; para evitar que si esperamos recibir un objeto de tipo task no recibamos un arreglo 
 Task.propTypes = {
     task: PropTypes.object.isRequired
 }
