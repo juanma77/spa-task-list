@@ -9,18 +9,24 @@ export default class TaskForm extends Component {
 
     // Esta función es para prevenir que se envíen los datos del formulario cuando damos clic en el botón de Enviar 
     onSubmit = event => {
-        console.log("Sending...", event);
+        // console.log("Sending...", event);
+
+        // Cada vez que damos clic en el botón de Enviar actualizamos el estado mandando una nueva tarea con su título y descripción 
+        this.props.addTask(this.state.title, this.state.description);
+
         event.preventDefault();
-       
+        //console.log(this.state);
     }
 
     // El event.target.value sirve para estar escuchando y que se muestre en consola cada vez que se escribe dentro de los input
     onChange = event => {
         //console.log(event.target.value);
+
         this.setState({
             [event.target.name] :  event.target.value
         })
-        console.log(event.target.name, event.target.value);
+        
+        // console.log(event.target.name, event.target.value);
     }
 
     render(){
