@@ -30,12 +30,22 @@ class App extends Component {
     }) 
   }
 
+  deleteTask = (id) =>{
+    // El método filter nos permite crear un nuevo arreglo creado a partir de elementos que cumplen ciertos criterios; por cada tarea que recorremos examinamos si el id de la tarea es diferente del id que nos están pasando, de ser así entonces no la eliminamos, pero si el id de la tarea es igual al id que nos están pasando entonces sí lo eliminamos; en sí creamos un nuevo arreglo de tareas y se lo asigmanos al estado, este nuevo arreglo estará conformado por un filtro y este filtro tendrá todas las tareas cuyo id sea diferente al id que nos están pasando, es decir el arreglo tendrá la tarea ya eliminada
+    const newTasks = this.state.tasks.filter(task => task.id !== id);
+    this.setState({
+      tasks: newTasks
+    });
+    console.log(newTasks);
+  }
+
   render(){
     return <div>
       {/* Aquí mandamos la propiedad que es un arreglo llamado "tasks", que puede ser cualquier otro nombre, desde este componente que es el padre, al componente TasksList, que sería el hijo; en el componente TasksList ahora debemos recibir esta propiedad con "this.props.tasks".
-      Al componente TaskForm le mandamos como propiedad la función addTask definida en este componente; en el componente TaskForm entonces debemos recibirla  */}
+      Al componente TaskForm le mandamos como propiedad la función addTask definida en este componente; en el componente TaskForm entonces debemos recibirla.
+      A TasksList le pasamos la función de deleteTask para posteriormente desde ese componente recibirla y  pasarsela al componente Task  */}
       <TaskForm addTask={ this.addTask }/>
-      <TasksList tasks={ this.state.tasks } />
+      <TasksList tasks={ this.state.tasks } deleteTask ={ this.deleteTask } />
     </div>  
   }
 }
