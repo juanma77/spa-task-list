@@ -8,6 +8,8 @@ import TaskForm from './components/TaskForm';
 
 import Posts from './components/Posts';
 
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+
 class App extends Component {
 
   state = {
@@ -54,15 +56,30 @@ class App extends Component {
     })
   }
 
+  //Usamos Router y Route para especificar las rutas de nuestra aplicacion
   render(){
     return <div>
+      <Router>
+        <Link to="/">Home</Link> 
+        <br/>
+        <Link to="/posts">Posts</Link>
+        <Route exact path="/" render={() =>{
+          return <div>
+              <TaskForm addTask={ this.addTask }/>
+              <TasksList tasks={ this.state.tasks } deleteTask ={ this.deleteTask } updateTask={ this.updateTask }/>
+          </div>
+          }}>   
+        </Route>
+        <Route path="/posts" component={ Posts }/> 
+      </Router>
+
+
       {/* Aquí mandamos la propiedad que es un arreglo llamado "tasks", que puede ser cualquier otro nombre, desde este componente que es el padre, al componente TasksList, que sería el hijo; en el componente TasksList ahora debemos recibir esta propiedad con "this.props.tasks".
       Al componente TaskForm le mandamos como propiedad la función addTask definida en este componente; en el componente TaskForm entonces debemos recibirla.
       A TasksList le pasamos la función de deleteTask para posteriormente desde ese componente recibirla y  pasarsela al componente Task.
       Mandamos como propiedad el método de updateTask desde este componente al componente TasksList; allá debemos de recibirlo   */}
-      <TaskForm addTask={ this.addTask }/>
-      <TasksList tasks={ this.state.tasks } deleteTask ={ this.deleteTask } updateTask={ this.updateTask }/>
-      <Posts/>
+      
+     
 
     </div>  
   }
