@@ -6,6 +6,8 @@ import TasksList from './components/TasksList';
 
 import TaskForm from './components/TaskForm';
 
+import Posts from './components/Posts';
+
 class App extends Component {
 
   state = {
@@ -60,6 +62,8 @@ class App extends Component {
       Mandamos como propiedad el método de updateTask desde este componente al componente TasksList; allá debemos de recibirlo   */}
       <TaskForm addTask={ this.addTask }/>
       <TasksList tasks={ this.state.tasks } deleteTask ={ this.deleteTask } updateTask={ this.updateTask }/>
+      <Posts/>
+
     </div>  
   }
 }
