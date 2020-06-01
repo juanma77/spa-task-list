@@ -39,13 +39,27 @@ class App extends Component {
     console.log(newTasks);
   }
 
+  // Para borrar una tarea recorremos el arreglo de tareas, y por cada tarea verificamos si el id de la tarea y el id que estamos buscando son iguales, si es así el valor de done cambia, si no regresamos la tarea
+  updateTask = (id) =>{
+    const newTasks = this.state.tasks.map(task =>{
+      if(task.id === id){
+        task.done = !task.done;
+      }
+      return task;
+    });
+    this.setState({
+      tasks: newTasks
+    })
+  }
+
   render(){
     return <div>
       {/* Aquí mandamos la propiedad que es un arreglo llamado "tasks", que puede ser cualquier otro nombre, desde este componente que es el padre, al componente TasksList, que sería el hijo; en el componente TasksList ahora debemos recibir esta propiedad con "this.props.tasks".
       Al componente TaskForm le mandamos como propiedad la función addTask definida en este componente; en el componente TaskForm entonces debemos recibirla.
-      A TasksList le pasamos la función de deleteTask para posteriormente desde ese componente recibirla y  pasarsela al componente Task  */}
+      A TasksList le pasamos la función de deleteTask para posteriormente desde ese componente recibirla y  pasarsela al componente Task.
+      Mandamos como propiedad el método de updateTask desde este componente al componente TasksList; allá debemos de recibirlo   */}
       <TaskForm addTask={ this.addTask }/>
-      <TasksList tasks={ this.state.tasks } deleteTask ={ this.deleteTask } />
+      <TasksList tasks={ this.state.tasks } deleteTask ={ this.deleteTask } updateTask={ this.updateTask }/>
     </div>  
   }
 }
